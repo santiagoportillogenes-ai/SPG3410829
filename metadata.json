@@ -1,0 +1,6 @@
+{
+  "name": "Simulador de Gestión Integral & Motor de Cálculo TIC",
+  "description": "Modelo de prototipo para cálculo avanzado de inventarios, compras, rotación, finanzas, punto de equilibrio y KPIs para cualquier sector con dataset DAX SENA y compatibilidad TIC multi-extensión.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

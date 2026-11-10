@@ -1,0 +1,1776 @@
+{
+    "Instrucciones": [
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "Dataset de práctica DAX · Visualización de datos utilizando Power BI",
+            "Unnamed: 2": NaN
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "Alfredo de Jesús Pérez Méndez. Instructor SENA · Gestión Administrativa y Financiera · SENA-CTAPT 2026",
+            "Unnamed: 2": NaN
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "Ficha CPL_3410829 · 3 de noviembre de 2026",
+            "Unnamed: 2": NaN
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": NaN,
+            "Unnamed: 2": NaN
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "1. Cargar en Power BI",
+            "Unnamed: 2": "Inicio › Libro de Excel › seleccione este archivo › en el Navegador marque las TABLAS FactVentas, DimRegion y DimCliente › Cargar."
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "2. FactVentas",
+            "Unnamed: 2": "Tabla de hechos: 51 líneas de servicio (enero a junio de 2026), 4 regiones, 3 servicios y 8 clientes. Hay pedidos con dos servicios y 2 descuentos vacíos (a propósito)."
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "3. DimRegion / DimCliente",
+            "Unnamed: 2": "Tablas de dimensión. DimRegion trae la Meta semestral de ventas para los KPI de cumplimiento (sesión 3)."
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "4. Relaciones",
+            "Unnamed: 2": "Vista de modelo: FactVentas[Región] *:1 DimRegion[Región] y FactVentas[ClienteID] *:1 DimCliente[ClienteID]."
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "5. Equivalencias",
+            "Unnamed: 2": "Cada resultado DAX de las presentaciones calculado con fórmulas de Excel. Si su medida no coincide con 'Resultado Excel', revise filtros, vacíos y relaciones."
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "6. Medidas_DAX",
+            "Unnamed: 2": "Biblioteca de fórmulas DAX por sesión, lista para copiar en la barra de fórmulas de Power BI."
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "7. Evidencias",
+            "Unnamed: 2": "Lista de entregas por sesión, plazo (una semana) y enlaces que debe publicar en el Padlet."
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "Separador regional",
+            "Unnamed: 2": "Si Power BI le marca error de sintaxis, cambie la coma (,) por punto y coma (;) según su configuración regional."
+        },
+        {
+            "Unnamed: 0": NaN,
+            "Unnamed: 1": "Padlet del curso",
+            "Unnamed: 2": "https://padlet.com/alferezteacher/proyectar-requerimientos-del-cliente-g5_rap1_3410829_n-obrer-8vz7zqcx1j6ngvji"
+        }
+    ],
+    "FactVentas": [
+        {
+            "PedidoID": "P001",
+            "Fecha": "2026-01-03 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Transporte",
+            "ClienteID": "C05",
+            "Cantidad": 20,
+            "PrecioUnitario": 590000,
+            "DescuentoPct": 0.1,
+            "Importe": 10620000,
+            "PrecioNeto": 531000,
+            "Bruto": 11800000,
+            "Mes": 1,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P002",
+            "Fecha": "2026-01-06 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Transporte",
+            "ClienteID": "C08",
+            "Cantidad": 5,
+            "PrecioUnitario": 530000,
+            "DescuentoPct": 0.1,
+            "Importe": 2385000,
+            "PrecioNeto": 477000,
+            "Bruto": 2650000,
+            "Mes": 1,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P003",
+            "Fecha": "2026-01-08 00:00:00",
+            "Región": "Bogotá",
+            "Servicio": "Distribución",
+            "ClienteID": "C04",
+            "Cantidad": 5,
+            "PrecioUnitario": 320000,
+            "DescuentoPct": 0.0,
+            "Importe": 1600000,
+            "PrecioNeto": 320000,
+            "Bruto": 1600000,
+            "Mes": 1,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P004",
+            "Fecha": "2026-01-14 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Transporte",
+            "ClienteID": "C05",
+            "Cantidad": 20,
+            "PrecioUnitario": 610000,
+            "DescuentoPct": 0.05,
+            "Importe": 11590000,
+            "PrecioNeto": 579500,
+            "Bruto": 12200000,
+            "Mes": 1,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P004",
+            "Fecha": "2026-01-14 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Distribución",
+            "ClienteID": "C05",
+            "Cantidad": 4,
+            "PrecioUnitario": 260000,
+            "DescuentoPct": NaN,
+            "Importe": 1040000,
+            "PrecioNeto": 260000,
+            "Bruto": 1040000,
+            "Mes": 1,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P005",
+            "Fecha": "2026-01-15 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C05",
+            "Cantidad": 6,
+            "PrecioUnitario": 160000,
+            "DescuentoPct": 0.05,
+            "Importe": 912000,
+            "PrecioNeto": 152000,
+            "Bruto": 960000,
+            "Mes": 1,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P006",
+            "Fecha": "2026-01-26 00:00:00",
+            "Región": "Bogotá",
+            "Servicio": "Transporte",
+            "ClienteID": "C04",
+            "Cantidad": 8,
+            "PrecioUnitario": 520000,
+            "DescuentoPct": 0.05,
+            "Importe": 3952000,
+            "PrecioNeto": 494000,
+            "Bruto": 4160000,
+            "Mes": 1,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P007",
+            "Fecha": "2026-02-02 00:00:00",
+            "Región": "Bogotá",
+            "Servicio": "Distribución",
+            "ClienteID": "C06",
+            "Cantidad": 11,
+            "PrecioUnitario": 320000,
+            "DescuentoPct": 0.05,
+            "Importe": 3344000,
+            "PrecioNeto": 304000,
+            "Bruto": 3520000,
+            "Mes": 2,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P008",
+            "Fecha": "2026-02-05 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Distribución",
+            "ClienteID": "C07",
+            "Cantidad": 11,
+            "PrecioUnitario": 320000,
+            "DescuentoPct": 0.0,
+            "Importe": 3520000,
+            "PrecioNeto": 320000,
+            "Bruto": 3520000,
+            "Mes": 2,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P009",
+            "Fecha": "2026-02-09 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Transporte",
+            "ClienteID": "C05",
+            "Cantidad": 20,
+            "PrecioUnitario": 550000,
+            "DescuentoPct": 0.05,
+            "Importe": 10450000,
+            "PrecioNeto": 522500,
+            "Bruto": 11000000,
+            "Mes": 2,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P010",
+            "Fecha": "2026-02-11 00:00:00",
+            "Región": "Urabá",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C02",
+            "Cantidad": 6,
+            "PrecioUnitario": 210000,
+            "DescuentoPct": 0.08,
+            "Importe": 1159200,
+            "PrecioNeto": 193200,
+            "Bruto": 1260000,
+            "Mes": 2,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P011",
+            "Fecha": "2026-02-15 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C07",
+            "Cantidad": 5,
+            "PrecioUnitario": 200000,
+            "DescuentoPct": 0.05,
+            "Importe": 950000,
+            "PrecioNeto": 190000,
+            "Bruto": 1000000,
+            "Mes": 2,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P012",
+            "Fecha": "2026-02-16 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Transporte",
+            "ClienteID": "C08",
+            "Cantidad": 10,
+            "PrecioUnitario": 580000,
+            "DescuentoPct": 0.0,
+            "Importe": 5800000,
+            "PrecioNeto": 580000,
+            "Bruto": 5800000,
+            "Mes": 2,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P013",
+            "Fecha": "2026-02-18 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C05",
+            "Cantidad": 6,
+            "PrecioUnitario": 220000,
+            "DescuentoPct": 0.05,
+            "Importe": 1254000,
+            "PrecioNeto": 209000,
+            "Bruto": 1320000,
+            "Mes": 2,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P014",
+            "Fecha": "2026-03-08 00:00:00",
+            "Región": "Bogotá",
+            "Servicio": "Distribución",
+            "ClienteID": "C04",
+            "Cantidad": 4,
+            "PrecioUnitario": 290000,
+            "DescuentoPct": 0.0,
+            "Importe": 1160000,
+            "PrecioNeto": 290000,
+            "Bruto": 1160000,
+            "Mes": 3,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P015",
+            "Fecha": "2026-03-10 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Distribución",
+            "ClienteID": "C07",
+            "Cantidad": 6,
+            "PrecioUnitario": 270000,
+            "DescuentoPct": 0.08,
+            "Importe": 1490400,
+            "PrecioNeto": 248400,
+            "Bruto": 1620000,
+            "Mes": 3,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P016",
+            "Fecha": "2026-03-11 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Distribución",
+            "ClienteID": "C05",
+            "Cantidad": 9,
+            "PrecioUnitario": 290000,
+            "DescuentoPct": 0.05,
+            "Importe": 2479500,
+            "PrecioNeto": 275500,
+            "Bruto": 2610000,
+            "Mes": 3,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P016",
+            "Fecha": "2026-03-11 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Transporte",
+            "ClienteID": "C05",
+            "Cantidad": 18,
+            "PrecioUnitario": 450000,
+            "DescuentoPct": 0.1,
+            "Importe": 7290000,
+            "PrecioNeto": 405000,
+            "Bruto": 8100000,
+            "Mes": 3,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P017",
+            "Fecha": "2026-03-14 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Transporte",
+            "ClienteID": "C08",
+            "Cantidad": 9,
+            "PrecioUnitario": 570000,
+            "DescuentoPct": 0.0,
+            "Importe": 5130000,
+            "PrecioNeto": 570000,
+            "Bruto": 5130000,
+            "Mes": 3,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P018",
+            "Fecha": "2026-03-18 00:00:00",
+            "Región": "Urabá",
+            "Servicio": "Distribución",
+            "ClienteID": "C02",
+            "Cantidad": 13,
+            "PrecioUnitario": 300000,
+            "DescuentoPct": 0.0,
+            "Importe": 3900000,
+            "PrecioNeto": 300000,
+            "Bruto": 3900000,
+            "Mes": 3,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P019",
+            "Fecha": "2026-03-19 00:00:00",
+            "Región": "Urabá",
+            "Servicio": "Transporte",
+            "ClienteID": "C01",
+            "Cantidad": 10,
+            "PrecioUnitario": 490000,
+            "DescuentoPct": 0.05,
+            "Importe": 4655000,
+            "PrecioNeto": 465500,
+            "Bruto": 4900000,
+            "Mes": 3,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P020",
+            "Fecha": "2026-03-21 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Distribución",
+            "ClienteID": "C03",
+            "Cantidad": 10,
+            "PrecioUnitario": 260000,
+            "DescuentoPct": 0.05,
+            "Importe": 2470000,
+            "PrecioNeto": 247000,
+            "Bruto": 2600000,
+            "Mes": 3,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P021",
+            "Fecha": "2026-03-23 00:00:00",
+            "Región": "Bogotá",
+            "Servicio": "Transporte",
+            "ClienteID": "C06",
+            "Cantidad": 13,
+            "PrecioUnitario": 610000,
+            "DescuentoPct": 0.0,
+            "Importe": 7930000,
+            "PrecioNeto": 610000,
+            "Bruto": 7930000,
+            "Mes": 3,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P022",
+            "Fecha": "2026-04-02 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C07",
+            "Cantidad": 4,
+            "PrecioUnitario": 180000,
+            "DescuentoPct": 0.0,
+            "Importe": 720000,
+            "PrecioNeto": 180000,
+            "Bruto": 720000,
+            "Mes": 4,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P022",
+            "Fecha": "2026-04-02 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Transporte",
+            "ClienteID": "C07",
+            "Cantidad": 21,
+            "PrecioUnitario": 640000,
+            "DescuentoPct": 0.08,
+            "Importe": 12364800,
+            "PrecioNeto": 588800,
+            "Bruto": 13440000,
+            "Mes": 4,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P023",
+            "Fecha": "2026-04-03 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Transporte",
+            "ClienteID": "C03",
+            "Cantidad": 8,
+            "PrecioUnitario": 440000,
+            "DescuentoPct": 0.0,
+            "Importe": 3520000,
+            "PrecioNeto": 440000,
+            "Bruto": 3520000,
+            "Mes": 4,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P023",
+            "Fecha": "2026-04-03 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C03",
+            "Cantidad": 8,
+            "PrecioUnitario": 180000,
+            "DescuentoPct": 0.08,
+            "Importe": 1324800,
+            "PrecioNeto": 165600,
+            "Bruto": 1440000,
+            "Mes": 4,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P024",
+            "Fecha": "2026-04-04 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C07",
+            "Cantidad": 10,
+            "PrecioUnitario": 180000,
+            "DescuentoPct": NaN,
+            "Importe": 1800000,
+            "PrecioNeto": 180000,
+            "Bruto": 1800000,
+            "Mes": 4,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P025",
+            "Fecha": "2026-04-06 00:00:00",
+            "Región": "Bogotá",
+            "Servicio": "Transporte",
+            "ClienteID": "C06",
+            "Cantidad": 19,
+            "PrecioUnitario": 590000,
+            "DescuentoPct": 0.08,
+            "Importe": 10313200,
+            "PrecioNeto": 542800,
+            "Bruto": 11210000,
+            "Mes": 4,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P026",
+            "Fecha": "2026-04-11 00:00:00",
+            "Región": "Urabá",
+            "Servicio": "Transporte",
+            "ClienteID": "C02",
+            "Cantidad": 13,
+            "PrecioUnitario": 540000,
+            "DescuentoPct": 0.0,
+            "Importe": 7020000,
+            "PrecioNeto": 540000,
+            "Bruto": 7020000,
+            "Mes": 4,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P027",
+            "Fecha": "2026-04-25 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Transporte",
+            "ClienteID": "C08",
+            "Cantidad": 16,
+            "PrecioUnitario": 560000,
+            "DescuentoPct": 0.05,
+            "Importe": 8512000,
+            "PrecioNeto": 532000,
+            "Bruto": 8960000,
+            "Mes": 4,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P027",
+            "Fecha": "2026-04-25 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Distribución",
+            "ClienteID": "C08",
+            "Cantidad": 8,
+            "PrecioUnitario": 310000,
+            "DescuentoPct": 0.0,
+            "Importe": 2480000,
+            "PrecioNeto": 310000,
+            "Bruto": 2480000,
+            "Mes": 4,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P028",
+            "Fecha": "2026-05-04 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C07",
+            "Cantidad": 10,
+            "PrecioUnitario": 150000,
+            "DescuentoPct": 0.1,
+            "Importe": 1350000,
+            "PrecioNeto": 135000,
+            "Bruto": 1500000,
+            "Mes": 5,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P029",
+            "Fecha": "2026-05-05 00:00:00",
+            "Región": "Urabá",
+            "Servicio": "Distribución",
+            "ClienteID": "C02",
+            "Cantidad": 10,
+            "PrecioUnitario": 280000,
+            "DescuentoPct": 0.08,
+            "Importe": 2576000,
+            "PrecioNeto": 257600,
+            "Bruto": 2800000,
+            "Mes": 5,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P030",
+            "Fecha": "2026-05-16 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Distribución",
+            "ClienteID": "C05",
+            "Cantidad": 13,
+            "PrecioUnitario": 270000,
+            "DescuentoPct": 0.0,
+            "Importe": 3510000,
+            "PrecioNeto": 270000,
+            "Bruto": 3510000,
+            "Mes": 5,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P031",
+            "Fecha": "2026-05-18 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Distribución",
+            "ClienteID": "C07",
+            "Cantidad": 13,
+            "PrecioUnitario": 300000,
+            "DescuentoPct": 0.0,
+            "Importe": 3900000,
+            "PrecioNeto": 300000,
+            "Bruto": 3900000,
+            "Mes": 5,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P031",
+            "Fecha": "2026-05-18 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C07",
+            "Cantidad": 7,
+            "PrecioUnitario": 200000,
+            "DescuentoPct": 0.0,
+            "Importe": 1400000,
+            "PrecioNeto": 200000,
+            "Bruto": 1400000,
+            "Mes": 5,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P032",
+            "Fecha": "2026-05-21 00:00:00",
+            "Región": "Bogotá",
+            "Servicio": "Transporte",
+            "ClienteID": "C04",
+            "Cantidad": 18,
+            "PrecioUnitario": 570000,
+            "DescuentoPct": 0.0,
+            "Importe": 10260000,
+            "PrecioNeto": 570000,
+            "Bruto": 10260000,
+            "Mes": 5,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P032",
+            "Fecha": "2026-05-21 00:00:00",
+            "Región": "Bogotá",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C04",
+            "Cantidad": 8,
+            "PrecioUnitario": 150000,
+            "DescuentoPct": 0.0,
+            "Importe": 1200000,
+            "PrecioNeto": 150000,
+            "Bruto": 1200000,
+            "Mes": 5,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P033",
+            "Fecha": "2026-05-23 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C07",
+            "Cantidad": 9,
+            "PrecioUnitario": 210000,
+            "DescuentoPct": 0.05,
+            "Importe": 1795500,
+            "PrecioNeto": 199500,
+            "Bruto": 1890000,
+            "Mes": 5,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P034",
+            "Fecha": "2026-05-24 00:00:00",
+            "Región": "Bogotá",
+            "Servicio": "Transporte",
+            "ClienteID": "C04",
+            "Cantidad": 16,
+            "PrecioUnitario": 610000,
+            "DescuentoPct": 0.0,
+            "Importe": 9760000,
+            "PrecioNeto": 610000,
+            "Bruto": 9760000,
+            "Mes": 5,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P035",
+            "Fecha": "2026-05-26 00:00:00",
+            "Región": "Urabá",
+            "Servicio": "Distribución",
+            "ClienteID": "C02",
+            "Cantidad": 13,
+            "PrecioUnitario": 290000,
+            "DescuentoPct": 0.08,
+            "Importe": 3468400,
+            "PrecioNeto": 266800,
+            "Bruto": 3770000,
+            "Mes": 5,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P036",
+            "Fecha": "2026-06-03 00:00:00",
+            "Región": "Urabá",
+            "Servicio": "Transporte",
+            "ClienteID": "C02",
+            "Cantidad": 10,
+            "PrecioUnitario": 590000,
+            "DescuentoPct": 0.1,
+            "Importe": 5310000,
+            "PrecioNeto": 531000,
+            "Bruto": 5900000,
+            "Mes": 6,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P036",
+            "Fecha": "2026-06-03 00:00:00",
+            "Región": "Urabá",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C02",
+            "Cantidad": 12,
+            "PrecioUnitario": 200000,
+            "DescuentoPct": 0.1,
+            "Importe": 2160000,
+            "PrecioNeto": 180000,
+            "Bruto": 2400000,
+            "Mes": 6,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P037",
+            "Fecha": "2026-06-04 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Distribución",
+            "ClienteID": "C03",
+            "Cantidad": 12,
+            "PrecioUnitario": 280000,
+            "DescuentoPct": 0.05,
+            "Importe": 3192000,
+            "PrecioNeto": 266000,
+            "Bruto": 3360000,
+            "Mes": 6,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P038",
+            "Fecha": "2026-06-06 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Distribución",
+            "ClienteID": "C08",
+            "Cantidad": 14,
+            "PrecioUnitario": 320000,
+            "DescuentoPct": 0.1,
+            "Importe": 4032000,
+            "PrecioNeto": 288000,
+            "Bruto": 4480000,
+            "Mes": 6,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P038",
+            "Fecha": "2026-06-06 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C08",
+            "Cantidad": 3,
+            "PrecioUnitario": 180000,
+            "DescuentoPct": 0.0,
+            "Importe": 540000,
+            "PrecioNeto": 180000,
+            "Bruto": 540000,
+            "Mes": 6,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P039",
+            "Fecha": "2026-06-12 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Distribución",
+            "ClienteID": "C05",
+            "Cantidad": 11,
+            "PrecioUnitario": 300000,
+            "DescuentoPct": 0.0,
+            "Importe": 3300000,
+            "PrecioNeto": 300000,
+            "Bruto": 3300000,
+            "Mes": 6,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P040",
+            "Fecha": "2026-06-14 00:00:00",
+            "Región": "Costa",
+            "Servicio": "Distribución",
+            "ClienteID": "C08",
+            "Cantidad": 14,
+            "PrecioUnitario": 290000,
+            "DescuentoPct": 0.0,
+            "Importe": 4060000,
+            "PrecioNeto": 290000,
+            "Bruto": 4060000,
+            "Mes": 6,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P041",
+            "Fecha": "2026-06-19 00:00:00",
+            "Región": "Medellín",
+            "Servicio": "Almacenamiento",
+            "ClienteID": "C07",
+            "Cantidad": 10,
+            "PrecioUnitario": 190000,
+            "DescuentoPct": 0.0,
+            "Importe": 1900000,
+            "PrecioNeto": 190000,
+            "Bruto": 1900000,
+            "Mes": 6,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        },
+        {
+            "PedidoID": "P042",
+            "Fecha": "2026-06-20 00:00:00",
+            "Región": "Urabá",
+            "Servicio": "Transporte",
+            "ClienteID": "C01",
+            "Cantidad": 13,
+            "PrecioUnitario": 620000,
+            "DescuentoPct": 0.0,
+            "Importe": 8060000,
+            "PrecioNeto": 620000,
+            "Bruto": 8060000,
+            "Mes": 6,
+            "Unnamed: 12": NaN,
+            "Columnas verdes = columnas calculadas en Excel (Importe, PrecioNeto, Bruto, Mes). En Power BI las creará con DAX.": NaN
+        }
+    ],
+    "DimRegion": [
+        {
+            "Región": "Urabá",
+            "Departamento": "Antioquia",
+            "MetaSemestral": 36000000
+        },
+        {
+            "Región": "Medellín",
+            "Departamento": "Antioquia",
+            "MetaSemestral": 45000000
+        },
+        {
+            "Región": "Bogotá",
+            "Departamento": "Cundinamarca",
+            "MetaSemestral": 48000000
+        },
+        {
+            "Región": "Costa",
+            "Departamento": "Atlántico",
+            "MetaSemestral": 96000000
+        }
+    ],
+    "DimCliente": [
+        {
+            "ClienteID": "C01",
+            "NombreCliente": "Exportadora Alfa",
+            "Región": "Urabá"
+        },
+        {
+            "ClienteID": "C02",
+            "NombreCliente": "Agroinsumos Beta",
+            "Región": "Urabá"
+        },
+        {
+            "ClienteID": "C03",
+            "NombreCliente": "Comercial Gamma",
+            "Región": "Medellín"
+        },
+        {
+            "ClienteID": "C04",
+            "NombreCliente": "Distribuidora Delta",
+            "Región": "Bogotá"
+        },
+        {
+            "ClienteID": "C05",
+            "NombreCliente": "Puerto Épsilon",
+            "Región": "Costa"
+        },
+        {
+            "ClienteID": "C06",
+            "NombreCliente": "Mercados Zeta",
+            "Región": "Bogotá"
+        },
+        {
+            "ClienteID": "C07",
+            "NombreCliente": "Frutas Eta",
+            "Región": "Medellín"
+        },
+        {
+            "ClienteID": "C08",
+            "NombreCliente": "Logística Theta",
+            "Región": "Costa"
+        }
+    ],
+    "Equivalencias": [
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": NaN,
+            "Unnamed: 1": NaN,
+            "Unnamed: 2": NaN,
+            "Unnamed: 3": NaN,
+            "Unnamed: 4": NaN,
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "SESIÓN 1 · 29 oct · Columnas calculadas, medidas, funciones DAX y conteo",
+            "Unnamed: 1": NaN,
+            "Unnamed: 2": NaN,
+            "Unnamed: 3": NaN,
+            "Unnamed: 4": NaN,
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Concepto",
+            "Unnamed: 1": "Fórmula Excel (viva)",
+            "Unnamed: 2": "Medida DAX equivalente",
+            "Unnamed: 3": "Resultado Excel",
+            "Unnamed: 4": "Valor en la presentación",
+            "Unnamed: 5": "Control"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas Totales",
+            "Unnamed: 1": " =SUM(Importe)",
+            "Unnamed: 2": " Ventas Totales = SUM(FactVentas[Importe])",
+            "Unnamed: 3": 214909800,
+            "Unnamed: 4": 214909800,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas Totales · Urabá",
+            "Unnamed: 1": " =SUMIF(Region,\"Urabá\",Importe)",
+            "Unnamed: 2": " [Ventas Totales] en gráfico por Región",
+            "Unnamed: 3": 38308600,
+            "Unnamed: 4": 38308600,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas Totales · Medellín",
+            "Unnamed: 1": " =SUMIF(Region,\"Medellín\",Importe)",
+            "Unnamed: 2": " [Ventas Totales] en gráfico por Región",
+            "Unnamed: 3": 41697500,
+            "Unnamed: 4": 41697500,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas Totales · Bogotá",
+            "Unnamed: 1": " =SUMIF(Region,\"Bogotá\",Importe)",
+            "Unnamed: 2": " [Ventas Totales] en gráfico por Región",
+            "Unnamed: 3": 49519200,
+            "Unnamed: 4": 49519200,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas Totales · Costa",
+            "Unnamed: 1": " =SUMIF(Region,\"Costa\",Importe)",
+            "Unnamed: 2": " [Ventas Totales] en gráfico por Región",
+            "Unnamed: 3": 85384500,
+            "Unnamed: 4": 85384500,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Líneas",
+            "Unnamed: 1": " =ROWS(Pedido)",
+            "Unnamed: 2": " Líneas = COUNTROWS(FactVentas)",
+            "Unnamed: 3": 51,
+            "Unnamed: 4": 51,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Pedidos únicos",
+            "Unnamed: 1": " =SUMPRODUCT(1/COUNTIF(Pedido,Pedido))",
+            "Unnamed: 2": " Pedidos = DISTINCTCOUNT(FactVentas[PedidoID])",
+            "Unnamed: 3": 42,
+            "Unnamed: 4": 42,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Clientes únicos",
+            "Unnamed: 1": " =SUMPRODUCT(1/COUNTIF(Cliente,Cliente))",
+            "Unnamed: 2": " Clientes = DISTINCTCOUNT(FactVentas[ClienteID])",
+            "Unnamed: 3": 8,
+            "Unnamed: 4": 8,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Descuentos registrados",
+            "Unnamed: 1": " =COUNT(Descuento)",
+            "Unnamed: 2": " COUNT(FactVentas[DescuentoPct])",
+            "Unnamed: 3": 49,
+            "Unnamed: 4": 49,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Descuentos vacíos",
+            "Unnamed: 1": " =COUNTBLANK(Descuento)",
+            "Unnamed: 2": " COUNTBLANK(FactVentas[DescuentoPct])",
+            "Unnamed: 3": 2,
+            "Unnamed: 4": 2,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Regiones con texto",
+            "Unnamed: 1": " =COUNTA(Region)",
+            "Unnamed: 2": " COUNTA(FactVentas[Región])",
+            "Unnamed: 3": 51,
+            "Unnamed: 4": 51,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "SESIÓN 2 · 5 nov · División entre columnas, AVERAGE y DISTINCT",
+            "Unnamed: 1": NaN,
+            "Unnamed: 2": NaN,
+            "Unnamed: 3": NaN,
+            "Unnamed: 4": NaN,
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Concepto",
+            "Unnamed: 1": "Fórmula Excel (viva)",
+            "Unnamed: 2": "Medida DAX equivalente",
+            "Unnamed: 3": "Resultado Excel",
+            "Unnamed: 4": "Valor en la presentación",
+            "Unnamed: 5": "Control"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ticket Promedio",
+            "Unnamed: 1": " =IFERROR(SUM(Importe)/SUMPRODUCT(1/COUNTIF(Pedido,Pedido)),0)",
+            "Unnamed: 2": " Ticket Promedio = DIVIDE([Ventas Totales], [Pedidos])",
+            "Unnamed: 3": 5116900,
+            "Unnamed: 4": 5116900,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Promedio de cocientes (trampa)",
+            "Unnamed: 1": " =AVERAGE(PrecioNeto)",
+            "Unnamed: 2": " AVERAGE(FactVentas[Precio Neto])",
+            "Unnamed: 3": 349543.137254902,
+            "Unnamed: 4": 349543.1373,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Precio neto por unidad (correcto)",
+            "Unnamed: 1": " =IFERROR(SUM(Importe)/SUM(Cantidad),0)",
+            "Unnamed: 2": " DIVIDE(SUM(FactVentas[Importe]), SUM(FactVentas[Cantidad]))",
+            "Unnamed: 3": 389329.347826087,
+            "Unnamed: 4": 389329.3478,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "% Descuento concedido",
+            "Unnamed: 1": " =IFERROR((SUM(Bruto)-SUM(Importe))/SUM(Bruto),0)",
+            "Unnamed: 2": " DIVIDE([Bruto] - [Ventas Totales], [Bruto])",
+            "Unnamed: 3": 0.042120698876805134,
+            "Unnamed: 4": 0.0421,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Cantidad Promedio",
+            "Unnamed: 1": " =AVERAGE(Cantidad)",
+            "Unnamed: 2": " AVERAGE(FactVentas[Cantidad])",
+            "Unnamed: 3": 10.823529411764707,
+            "Unnamed: 4": 10.8235,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Descuento promedio (ignora vacíos)",
+            "Unnamed: 1": " =AVERAGE(Descuento)",
+            "Unnamed: 2": " AVERAGE(FactVentas[DescuentoPct])",
+            "Unnamed: 3": 0.03897959183673471,
+            "Unnamed: 4": 0.039,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Promedio por Línea",
+            "Unnamed: 1": " =AVERAGE(Importe)",
+            "Unnamed: 2": " AVERAGEX(FactVentas, FactVentas[Importe])",
+            "Unnamed: 3": 4213917.647058823,
+            "Unnamed: 4": 4213917.6471,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Promedio por Pedido",
+            "Unnamed: 1": " =SUM(Importe)/SUMPRODUCT(1/COUNTIF(Pedido,Pedido))",
+            "Unnamed: 2": " AVERAGEX(DISTINCT(FactVentas[PedidoID]), [Ventas Totales])",
+            "Unnamed: 3": 5116900,
+            "Unnamed: 4": 5116900,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ticket Promedio · Urabá",
+            "Unnamed: 1": " =SUMIF(Region,\"Urabá\",Importe)/SUMPRODUCT((Region=\"Urabá\")/COUNTIFS(Pedido,Pedido,Region,Region))",
+            "Unnamed: 2": " [Ticket Promedio] filtrado por Región",
+            "Unnamed: 3": 4788575,
+            "Unnamed: 4": 4788575,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ticket Promedio · Medellín",
+            "Unnamed: 1": " =SUMIF(Region,\"Medellín\",Importe)/SUMPRODUCT((Region=\"Medellín\")/COUNTIFS(Pedido,Pedido,Region,Region))",
+            "Unnamed: 2": " [Ticket Promedio] filtrado por Región",
+            "Unnamed: 3": 3474791.6666666665,
+            "Unnamed: 4": 3474791.6667,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ticket Promedio · Bogotá",
+            "Unnamed: 1": " =SUMIF(Region,\"Bogotá\",Importe)/SUMPRODUCT((Region=\"Bogotá\")/COUNTIFS(Pedido,Pedido,Region,Region))",
+            "Unnamed: 2": " [Ticket Promedio] filtrado por Región",
+            "Unnamed: 3": 6189900,
+            "Unnamed: 4": 6189900,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ticket Promedio · Costa",
+            "Unnamed: 1": " =SUMIF(Region,\"Costa\",Importe)/SUMPRODUCT((Region=\"Costa\")/COUNTIFS(Pedido,Pedido,Region,Region))",
+            "Unnamed: 2": " [Ticket Promedio] filtrado por Región",
+            "Unnamed: 3": 6098892.857142857,
+            "Unnamed: 4": 6098892.8571,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Clientes Atendidos (filas de DISTINCT)",
+            "Unnamed: 1": " =SUMPRODUCT(1/COUNTIF(Cliente,Cliente))",
+            "Unnamed: 2": " COUNTROWS(DISTINCT(FactVentas[ClienteID]))",
+            "Unnamed: 3": 8,
+            "Unnamed: 4": 8,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "SESIÓN 3 · 12 nov · CALCULATE, metas y agrupamiento de funciones",
+            "Unnamed: 1": NaN,
+            "Unnamed: 2": NaN,
+            "Unnamed: 3": NaN,
+            "Unnamed: 4": NaN,
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Concepto",
+            "Unnamed: 1": "Fórmula Excel (viva)",
+            "Unnamed: 2": "Medida DAX equivalente",
+            "Unnamed: 3": "Resultado Excel",
+            "Unnamed: 4": "Valor en la presentación",
+            "Unnamed: 5": "Control"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas Transporte",
+            "Unnamed: 1": " =SUMIF(Servicio,\"Transporte\",Importe)",
+            "Unnamed: 2": " CALCULATE([Ventas Totales], FactVentas[Servicio] = \"Transporte\")",
+            "Unnamed: 3": 144922000,
+            "Unnamed: 4": 144922000,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "% Transporte",
+            "Unnamed: 1": " =SUMIF(Servicio,\"Transporte\",Importe)/SUM(Importe)",
+            "Unnamed: 2": " DIVIDE([Ventas Transporte], [Ventas Totales])",
+            "Unnamed: 3": 0.6743387225710508,
+            "Unnamed: 4": 0.6743,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "% Participación · Urabá",
+            "Unnamed: 1": " =SUMIF(Region,\"Urabá\",Importe)/SUM(Importe)",
+            "Unnamed: 2": " DIVIDE([Ventas Totales], CALCULATE([Ventas Totales], REMOVEFILTERS(FactVentas[Región])))",
+            "Unnamed: 3": 0.17825431878862666,
+            "Unnamed: 4": 0.1783,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "% Participación · Medellín",
+            "Unnamed: 1": " =SUMIF(Region,\"Medellín\",Importe)/SUM(Importe)",
+            "Unnamed: 2": " DIVIDE([Ventas Totales], CALCULATE([Ventas Totales], REMOVEFILTERS(FactVentas[Región])))",
+            "Unnamed: 3": 0.19402325999093573,
+            "Unnamed: 4": 0.194,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "% Participación · Bogotá",
+            "Unnamed: 1": " =SUMIF(Region,\"Bogotá\",Importe)/SUM(Importe)",
+            "Unnamed: 2": " DIVIDE([Ventas Totales], CALCULATE([Ventas Totales], REMOVEFILTERS(FactVentas[Región])))",
+            "Unnamed: 3": 0.23041852907591928,
+            "Unnamed: 4": 0.2304,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "% Participación · Costa",
+            "Unnamed: 1": " =SUMIF(Region,\"Costa\",Importe)/SUM(Importe)",
+            "Unnamed: 2": " DIVIDE([Ventas Totales], CALCULATE([Ventas Totales], REMOVEFILTERS(FactVentas[Región])))",
+            "Unnamed: 3": 0.3973038921445183,
+            "Unnamed: 4": 0.3973,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Meta Ventas",
+            "Unnamed: 1": " =SUM(MetaRegion)",
+            "Unnamed: 2": " Meta Ventas = SUM(DimRegion[MetaSemestral])",
+            "Unnamed: 3": 225000000,
+            "Unnamed: 4": 225000000,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "% Cumplimiento total",
+            "Unnamed: 1": " =IFERROR(SUM(Importe)/SUM(MetaRegion),0)",
+            "Unnamed: 2": " % Cumplimiento = DIVIDE([Ventas Totales], [Meta Ventas])",
+            "Unnamed: 3": 0.9551546666666667,
+            "Unnamed: 4": 0.9552,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "% Cumplimiento · Urabá",
+            "Unnamed: 1": " =IFERROR(SUMIF(Region,\"Urabá\",Importe)/SUMIF(RegionMeta,\"Urabá\",MetaRegion),0)",
+            "Unnamed: 2": " [% Cumplimiento] filtrado por Región",
+            "Unnamed: 3": 1.0641277777777778,
+            "Unnamed: 4": 1.0641,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "% Cumplimiento · Medellín",
+            "Unnamed: 1": " =IFERROR(SUMIF(Region,\"Medellín\",Importe)/SUMIF(RegionMeta,\"Medellín\",MetaRegion),0)",
+            "Unnamed: 2": " [% Cumplimiento] filtrado por Región",
+            "Unnamed: 3": 0.9266111111111112,
+            "Unnamed: 4": 0.9266,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "% Cumplimiento · Bogotá",
+            "Unnamed: 1": " =IFERROR(SUMIF(Region,\"Bogotá\",Importe)/SUMIF(RegionMeta,\"Bogotá\",MetaRegion),0)",
+            "Unnamed: 2": " [% Cumplimiento] filtrado por Región",
+            "Unnamed: 3": 1.03165,
+            "Unnamed: 4": 1.0316,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "% Cumplimiento · Costa",
+            "Unnamed: 1": " =IFERROR(SUMIF(Region,\"Costa\",Importe)/SUMIF(RegionMeta,\"Costa\",MetaRegion),0)",
+            "Unnamed: 2": " [% Cumplimiento] filtrado por Región",
+            "Unnamed: 3": 0.889421875,
+            "Unnamed: 4": 0.8894,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Transporte x Pedido (VAR)",
+            "Unnamed: 1": " =SUMIF(Servicio,\"Transporte\",Importe)/SUMPRODUCT(1/COUNTIF(Pedido,Pedido))",
+            "Unnamed: 2": " VAR VentasT = … VAR NPedidos = … RETURN DIVIDE(VentasT, NPedidos)",
+            "Unnamed: 3": 3450523.8095238097,
+            "Unnamed: 4": 3450523.8095,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "SESIÓN 4 · 19 nov · DAX avanzado y tablero integrador",
+            "Unnamed: 1": NaN,
+            "Unnamed: 2": NaN,
+            "Unnamed: 3": NaN,
+            "Unnamed: 4": NaN,
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Concepto",
+            "Unnamed: 1": "Fórmula Excel (viva)",
+            "Unnamed: 2": "Medida DAX equivalente",
+            "Unnamed: 3": "Resultado Excel",
+            "Unnamed: 4": "Valor en la presentación",
+            "Unnamed: 5": "Control"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas Pedidos Grandes (Cantidad ≥ 15)",
+            "Unnamed: 1": " =SUMIF(Cantidad,\">=15\",Importe)",
+            "Unnamed: 2": " CALCULATE([Ventas Totales], FILTER(FactVentas, FactVentas[Cantidad] >= 15))",
+            "Unnamed: 3": 91160000,
+            "Unnamed: 4": 91160000,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas del mes · Enero",
+            "Unnamed: 1": " =SUMIF(Mes,1,Importe)",
+            "Unnamed: 2": " [Ventas Totales] por DimFecha[Mes]",
+            "Unnamed: 3": 32099000,
+            "Unnamed: 4": 32099000,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas del mes · Febrero",
+            "Unnamed: 1": " =SUMIF(Mes,2,Importe)",
+            "Unnamed: 2": " [Ventas Totales] por DimFecha[Mes]",
+            "Unnamed: 3": 26477200,
+            "Unnamed: 4": 26477200,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas del mes · Marzo",
+            "Unnamed: 1": " =SUMIF(Mes,3,Importe)",
+            "Unnamed: 2": " [Ventas Totales] por DimFecha[Mes]",
+            "Unnamed: 3": 36504900,
+            "Unnamed: 4": 36504900,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas del mes · Abril",
+            "Unnamed: 1": " =SUMIF(Mes,4,Importe)",
+            "Unnamed: 2": " [Ventas Totales] por DimFecha[Mes]",
+            "Unnamed: 3": 48054800,
+            "Unnamed: 4": 48054800,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas del mes · Mayo",
+            "Unnamed: 1": " =SUMIF(Mes,5,Importe)",
+            "Unnamed: 2": " [Ventas Totales] por DimFecha[Mes]",
+            "Unnamed: 3": 39219900,
+            "Unnamed: 4": 39219900,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas del mes · Junio",
+            "Unnamed: 1": " =SUMIF(Mes,6,Importe)",
+            "Unnamed: 2": " [Ventas Totales] por DimFecha[Mes]",
+            "Unnamed: 3": 32554000,
+            "Unnamed: 4": 32554000,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Ventas YTD · Junio",
+            "Unnamed: 1": " =SUM(D49:D54)",
+            "Unnamed: 2": " TOTALYTD([Ventas Totales], DimFecha[Date])",
+            "Unnamed: 3": 214909800,
+            "Unnamed: 4": 214909800,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Var % MoM · Febrero",
+            "Unnamed: 1": " =IFERROR((D50-D49)/D49,0)",
+            "Unnamed: 2": " DIVIDE([Ventas Totales] - [Ventas Mes Anterior], [Ventas Mes Anterior])",
+            "Unnamed: 3": -0.17513941244275522,
+            "Unnamed: 4": -0.1751,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Var % MoM · Marzo",
+            "Unnamed: 1": " =IFERROR((D51-D50)/D50,0)",
+            "Unnamed: 2": " DIVIDE([Ventas Totales] - [Ventas Mes Anterior], [Ventas Mes Anterior])",
+            "Unnamed: 3": 0.3787296239783663,
+            "Unnamed: 4": 0.3787,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Var % MoM · Abril",
+            "Unnamed: 1": " =IFERROR((D52-D51)/D51,0)",
+            "Unnamed: 2": " DIVIDE([Ventas Totales] - [Ventas Mes Anterior], [Ventas Mes Anterior])",
+            "Unnamed: 3": 0.3163931417426154,
+            "Unnamed: 4": 0.3164,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Var % MoM · Mayo",
+            "Unnamed: 1": " =IFERROR((D53-D52)/D52,0)",
+            "Unnamed: 2": " DIVIDE([Ventas Totales] - [Ventas Mes Anterior], [Ventas Mes Anterior])",
+            "Unnamed: 3": -0.18385052065558488,
+            "Unnamed: 4": -0.1839,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "Var % MoM · Junio",
+            "Unnamed: 1": " =IFERROR((D54-D53)/D53,0)",
+            "Unnamed: 2": " DIVIDE([Ventas Totales] - [Ventas Mes Anterior], [Ventas Mes Anterior])",
+            "Unnamed: 3": -0.16996218756294637,
+            "Unnamed: 4": -0.17,
+            "Unnamed: 5": "Coincide"
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": NaN,
+            "Unnamed: 1": NaN,
+            "Unnamed: 2": NaN,
+            "Unnamed: 3": NaN,
+            "Unnamed: 4": NaN,
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "SESIÓN 4 · Ranking (RANKX) y segmentación (SWITCH) de clientes",
+            "Unnamed: 1": NaN,
+            "Unnamed: 2": NaN,
+            "Unnamed: 3": NaN,
+            "Unnamed: 4": NaN,
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "ClienteID",
+            "Unnamed: 1": "NombreCliente",
+            "Unnamed: 2": "Ventas Totales (SUMIF)",
+            "Unnamed: 3": "Ranking (RANK)",
+            "Unnamed: 4": "Segmento (IF anidado)",
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "C01",
+            "Unnamed: 1": "Exportadora Alfa",
+            "Unnamed: 2": 12715000,
+            "Unnamed: 3": 7,
+            "Unnamed: 4": "Bronce",
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "C02",
+            "Unnamed: 1": "Agroinsumos Beta",
+            "Unnamed: 2": 25593600,
+            "Unnamed: 3": 5,
+            "Unnamed: 4": "Plata",
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "C03",
+            "Unnamed: 1": "Comercial Gamma",
+            "Unnamed: 2": 10506800,
+            "Unnamed: 3": 8,
+            "Unnamed: 4": "Bronce",
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "C04",
+            "Unnamed: 1": "Distribuidora Delta",
+            "Unnamed: 2": 27932000,
+            "Unnamed: 3": 4,
+            "Unnamed: 4": "Plata",
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "C05",
+            "Unnamed: 1": "Puerto Épsilon",
+            "Unnamed: 2": 52445500,
+            "Unnamed: 3": 1,
+            "Unnamed: 4": "Oro",
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "C06",
+            "Unnamed: 1": "Mercados Zeta",
+            "Unnamed: 2": 21587200,
+            "Unnamed: 3": 6,
+            "Unnamed: 4": "Plata",
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "C07",
+            "Unnamed: 1": "Frutas Eta",
+            "Unnamed: 2": 31190700,
+            "Unnamed: 3": 3,
+            "Unnamed: 4": "Oro",
+            "Unnamed: 5": NaN
+        },
+        {
+            "Reconciliación Excel ↔ DAX · resultados de las 4 presentaciones": "C08",
+            "Unnamed: 1": "Logística Theta",
+            "Unnamed: 2": 32939000,
+            "Unnamed: 3": 2,
+            "Unnamed: 4": "Oro",
+            "Unnamed: 5": NaN
+        }
+    ],
+    "Medidas_DAX": [
+        {
+            "Sesión": 1,
+            "Objeto": "Columna Importe",
+            "Fórmula DAX": " Importe = FactVentas[Cantidad] * FactVentas[PrecioUnitario] * (1 - FactVentas[DescuentoPct])",
+            "Para qué sirve": "Valor neto de cada línea (contexto de fila)",
+            "Dónde se crea": "Herramientas de tabla › Nueva columna"
+        },
+        {
+            "Sesión": 1,
+            "Objeto": "Medida Ventas Totales",
+            "Fórmula DAX": " Ventas Totales = SUM(FactVentas[Importe])",
+            "Para qué sirve": "Total que responde a los filtros",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 1,
+            "Objeto": "Medida Líneas",
+            "Fórmula DAX": " Líneas = COUNTROWS(FactVentas)",
+            "Para qué sirve": "Número de filas",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 1,
+            "Objeto": "Medida Pedidos",
+            "Fórmula DAX": " Pedidos = DISTINCTCOUNT(FactVentas[PedidoID])",
+            "Para qué sirve": "Pedidos únicos",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 1,
+            "Objeto": "Medida Clientes",
+            "Fórmula DAX": " Clientes = DISTINCTCOUNT(FactVentas[ClienteID])",
+            "Para qué sirve": "Clientes únicos",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 1,
+            "Objeto": "Medida Descuentos Vacíos",
+            "Fórmula DAX": " Descuentos Vacíos = COUNTBLANK(FactVentas[DescuentoPct])",
+            "Para qué sirve": "Detectar datos faltantes",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 2,
+            "Objeto": "Columna Precio Neto",
+            "Fórmula DAX": " Precio Neto = DIVIDE([Importe], [Cantidad])",
+            "Para qué sirve": "Precio unitario neto por línea",
+            "Dónde se crea": "Herramientas de tabla › Nueva columna"
+        },
+        {
+            "Sesión": 2,
+            "Objeto": "Medida Ticket Promedio",
+            "Fórmula DAX": " Ticket Promedio = DIVIDE([Ventas Totales], [Pedidos])",
+            "Para qué sirve": "Valor promedio por pedido",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 2,
+            "Objeto": "Medida Bruto",
+            "Fórmula DAX": " Bruto = SUMX(FactVentas, FactVentas[Cantidad] * FactVentas[PrecioUnitario])",
+            "Para qué sirve": "Ventas antes de descuento",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 2,
+            "Objeto": "Medida % Descuento",
+            "Fórmula DAX": " % Descuento = DIVIDE([Bruto] - [Ventas Totales], [Bruto])",
+            "Para qué sirve": "Peso de los descuentos concedidos",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 2,
+            "Objeto": "Medida Cantidad Promedio",
+            "Fórmula DAX": " Cantidad Promedio = AVERAGE(FactVentas[Cantidad])",
+            "Para qué sirve": "Promedio simple de una columna",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 2,
+            "Objeto": "Medida Promedio por Línea",
+            "Fórmula DAX": " Promedio por Línea = AVERAGEX(FactVentas, FactVentas[Importe])",
+            "Para qué sirve": "Promedio iterando líneas",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 2,
+            "Objeto": "Medida Promedio por Pedido",
+            "Fórmula DAX": " Promedio por Pedido = AVERAGEX(DISTINCT(FactVentas[PedidoID]), [Ventas Totales])",
+            "Para qué sirve": "Promedio con granularidad de pedido",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 2,
+            "Objeto": "Tabla Clientes Atendidos",
+            "Fórmula DAX": " Clientes Atendidos = DISTINCT(FactVentas[ClienteID])",
+            "Para qué sirve": "Lista de clientes únicos",
+            "Dónde se crea": "Herramientas de tabla › Nueva tabla"
+        },
+        {
+            "Sesión": 2,
+            "Objeto": "Medida Clientes Activos",
+            "Fórmula DAX": " Clientes Activos = COUNTROWS(DISTINCT(FactVentas[ClienteID]))",
+            "Para qué sirve": "Equivale a DISTINCTCOUNT",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 3,
+            "Objeto": "Medida Ventas Transporte",
+            "Fórmula DAX": " Ventas Transporte = CALCULATE([Ventas Totales], FactVentas[Servicio] = \"Transporte\")",
+            "Para qué sirve": "Agrega un filtro de servicio",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 3,
+            "Objeto": "Medida % Participación Región",
+            "Fórmula DAX": " % Participación Región = DIVIDE([Ventas Totales], CALCULATE([Ventas Totales], REMOVEFILTERS(FactVentas[Región])))",
+            "Para qué sirve": "Peso de cada región",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 3,
+            "Objeto": "Medida Meta Ventas",
+            "Fórmula DAX": " Meta Ventas = SUM(DimRegion[MetaSemestral])",
+            "Para qué sirve": "Meta del semestre",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 3,
+            "Objeto": "Medida % Cumplimiento",
+            "Fórmula DAX": " % Cumplimiento = DIVIDE([Ventas Totales], [Meta Ventas])",
+            "Para qué sirve": "KPI de cumplimiento",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 3,
+            "Objeto": "Medida Transporte x Pedido",
+            "Fórmula DAX": " Transporte x Pedido = VAR VentasT = CALCULATE([Ventas Totales], FactVentas[Servicio] = \"Transporte\") VAR NPedidos = DISTINCTCOUNT(FactVentas[PedidoID]) RETURN DIVIDE(VentasT, NPedidos)",
+            "Para qué sirve": "Funciones agrupadas con variables",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 3,
+            "Objeto": "Tabla Resumen Región",
+            "Fórmula DAX": " Resumen Región = ADDCOLUMNS(SUMMARIZE(FactVentas, FactVentas[Región]), \"Ventas\", [Ventas Totales], \"Pedidos\", [Pedidos], \"Ticket\", [Ticket Promedio])",
+            "Para qué sirve": "Tabla agrupada",
+            "Dónde se crea": "Herramientas de tabla › Nueva tabla"
+        },
+        {
+            "Sesión": 4,
+            "Objeto": "Medida Ventas Totales (SUMX)",
+            "Fórmula DAX": " Ventas Totales SUMX = SUMX(FactVentas, FactVentas[Cantidad] * FactVentas[PrecioUnitario] * (1 - FactVentas[DescuentoPct]))",
+            "Para qué sirve": "Iterador sin columna auxiliar",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 4,
+            "Objeto": "Medida Ventas Pedidos Grandes",
+            "Fórmula DAX": " Ventas Pedidos Grandes = CALCULATE([Ventas Totales], FILTER(FactVentas, FactVentas[Cantidad] >= 15))",
+            "Para qué sirve": "Filtro de tabla",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 4,
+            "Objeto": "Tabla DimFecha",
+            "Fórmula DAX": " DimFecha = ADDCOLUMNS(CALENDAR(DATE(2026,1,1), DATE(2026,6,30)), \"Año\", YEAR([Date]), \"MesNumero\", MONTH([Date]), \"Mes\", FORMAT([Date], \"mmmm\"), \"Trimestre\", \"T\" & FORMAT([Date], \"Q\"))",
+            "Para qué sirve": "Tabla calendario",
+            "Dónde se crea": "Herramientas de tabla › Nueva tabla › Marcar como tabla de fechas"
+        },
+        {
+            "Sesión": 4,
+            "Objeto": "Medida Ventas YTD",
+            "Fórmula DAX": " Ventas YTD = TOTALYTD([Ventas Totales], DimFecha[Date])",
+            "Para qué sirve": "Acumulado del año",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 4,
+            "Objeto": "Medida Ventas Mes Anterior",
+            "Fórmula DAX": " Ventas Mes Anterior = CALCULATE([Ventas Totales], DATEADD(DimFecha[Date], -1, MONTH))",
+            "Para qué sirve": "Desplaza un mes",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 4,
+            "Objeto": "Medida Var % MoM",
+            "Fórmula DAX": " Var % MoM = DIVIDE([Ventas Totales] - [Ventas Mes Anterior], [Ventas Mes Anterior])",
+            "Para qué sirve": "Variación mensual",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 4,
+            "Objeto": "Medida Ranking Cliente",
+            "Fórmula DAX": " Ranking Cliente = RANKX(ALL(DimCliente[NombreCliente]), [Ventas Totales], , DESC)",
+            "Para qué sirve": "Posición del cliente",
+            "Dónde se crea": "Inicio › Nueva medida"
+        },
+        {
+            "Sesión": 4,
+            "Objeto": "Medida Segmento",
+            "Fórmula DAX": " Segmento = SWITCH(TRUE(), [Ventas Totales] >= 30000000, \"Oro\", [Ventas Totales] >= 20000000, \"Plata\", \"Bronce\")",
+            "Para qué sirve": "Clasificación por reglas",
+            "Dónde se crea": "Inicio › Nueva medida"
+        }
+    ],
+    "Evidencias": [
+        {
+            "Sesión": 1,
+            "Fecha": "2026-11-03 00:00:00",
+            "Tema": "Columnas calculadas, medidas, funciones DAX y conteo",
+            "Evidencias a publicar en el Padlet (enlace por enlace)": "1) Captura del Tablero 1  2) Fórmulas DAX en texto  3) Respuesta: ¿por qué Importe es columna y Ventas Totales medida?  4) Enlace al .pbix en Google Drive",
+            "Plazo (una semana)": "09/11/2026 11:59 p. m.",
+            "Estado": "Pendiente"
+        },
+        {
+            "Sesión": 2,
+            "Fecha": "2026-11-10 00:00:00",
+            "Tema": "División entre columnas, AVERAGE y DISTINCT",
+            "Evidencias a publicar en el Padlet (enlace por enlace)": "1) Captura del Tablero 2  2) Fórmulas  3) Análisis: promedio de cocientes vs. cociente de totales  4) Enlace al .pbix",
+            "Plazo (una semana)": "16/11/2026 11:59 p. m.",
+            "Estado": "Pendiente"
+        },
+        {
+            "Sesión": 3,
+            "Fecha": "2026-11-17 00:00:00",
+            "Tema": "CALCULATE, metas y agrupamiento de funciones",
+            "Evidencias a publicar en el Padlet (enlace por enlace)": "1) Captura del Tablero 3  2) Captura de la vista de modelo  3) Fórmulas  4) Explicación del filtro que agrega o quita CALCULATE  5) Enlace al .pbix",
+            "Plazo (una semana)": "23/11/2026 11:59 p. m.",
+            "Estado": "Pendiente"
+        },
+        {
+            "Sesión": 4,
+            "Fecha": "2026-11-24 00:00:00",
+            "Tema": "DAX avanzado y tablero ejecutivo",
+            "Evidencias a publicar en el Padlet (enlace por enlace)": "1) Captura del tablero ejecutivo  2) Fórmulas  3) Tres hallazgos para la gerencia  4) Enlace al .pbix",
+            "Plazo (una semana)": "23/11/2026 11:59 p. m.",
+            "Estado": "Pendiente"
+        },
+        {
+            "Sesión": "Final",
+            "Fecha": "2026-12-08 00:00:00",
+            "Tema": "Prototipo del trabajo de campo con Power BI",
+            "Evidencias a publicar en el Padlet (enlace por enlace)": "1) .pbix en Drive  2) Cuaderno de Gemini Notebook  3) Prompt / proyecto de Google AI Studio  4) Carpeta de Google Drive  5) Presentación en Google Slides con voz en off  6) Captura del dashboard  7) Documento de trazabilidad",
+            "Plazo (una semana)": "08/12/2026 11:59 p. m.",
+            "Estado": "Pendiente"
+        },
+        {
+            "Sesión": NaN,
+            "Fecha": "NaT",
+            "Tema": NaN,
+            "Evidencias a publicar en el Padlet (enlace por enlace)": NaN,
+            "Plazo (una semana)": NaN,
+            "Estado": NaN
+        },
+        {
+            "Sesión": "https://padlet.com/alferezteacher/proyectar-requerimientos-del-cliente-g5_rap1_3410829_n-obrer-8vz7zqcx1j6ngvji",
+            "Fecha": "NaT",
+            "Tema": NaN,
+            "Evidencias a publicar en el Padlet (enlace por enlace)": NaN,
+            "Plazo (una semana)": NaN,
+            "Estado": NaN
+        }
+    ]
+}
